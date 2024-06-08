@@ -40,6 +40,7 @@ Based on performance metrics comparison and evaluation, the following models wer
 This project has been implemented for local deployment using Flask. The application provides an interface where users can input medical parameters and receive predictions on whether they may have liver disease. The Flask application consists of the following components:
 - `app.py`: The main Flask application file that handles the server and prediction logic.
 - `index.html`: The front-end HTML file for user input.
+- `result.html`: The front-end HTML file for predicted page.
 - `requirements.txt`: The file listing the required Python packages for the project.
 
 ### Prerequisites
@@ -74,7 +75,7 @@ This project has been implemented for local deployment using Flask. The applicat
 
 - `app.py`: The main Flask application file.
 - `templates/index.html`: The HTML template for the web interface.
-- `templates/style.css`: CSS file for styling the web interface.
+- `templates/result.html`: The HTML file for styling the web interface.
 - `requirements.txt`: The file listing the required Python packages.
 
 ## Usage
