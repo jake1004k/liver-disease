@@ -90,9 +90,15 @@ pip install -r requirements.txt
 3.Run the Flask application:
 python app.py
 
+<<<<<<< HEAD
 Open your web browser and go to http://127.0.0.1:81 to access the application.
 
 ### File Structure 
+=======
+Open your web browser and go to http://127.0.0.81:5000 to access the application.
+
+### File Structure
+>>>>>>> 5a8431300d0093b0dac49cad4d40be3249db92a7
 
 - `app.py`: The main Flask application file.
 - `templates/index.html`: The HTML template for the web interface.
@@ -103,9 +109,15 @@ Open your web browser and go to http://127.0.0.1:81 to access the application.
 
 1. Open the application in your web browser.
 2. Enter the medical parameters in the input fields.
+<<<<<<< HEAD
 3. Click the "Predict" button to get the model prediction.
 
 ## Docker Deployment in docker folder
+=======
+3. Click the "Predict" button to get the model's prediction.
+
+## Docker Deployment
+>>>>>>> 5a8431300d0093b0dac49cad4d40be3249db92a7
 
 This project can also be deployed using Docker. The Docker image is available with the tag `sanjay1004k/liver`. To deploy the project using Docker, follow these steps:
 
