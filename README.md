@@ -1,46 +1,70 @@
-# Liver Disease Prediction
+# Liver Disease Prediction Project on docker
 
-## Introduction
+This project aims to predict liver disease in patients based on various features related to their health. The dataset includes features such as age, gender, bilirubin levels, liver enzyme levels, and other blood parameters. The target variable indicates whether the patient has liver disease or not.
 
-The liver, the largest organ in the human body, plays a crucial role in various essential functions such as digestion, energy storage, and detoxification. Any malfunctioning of the liver can lead to severe health complications and diseases. This project aims to leverage machine learning techniques to identify patients with liver disease early, thereby reducing the burden on healthcare professionals and improving patient outcomes.
+## Purpose of the Project
 
-## Causes of Liver Malfunction
+The purpose of this project is to develop a predictive model that can accurately classify patients as having liver disease or not based on their health parameters. This model can be used by healthcare professionals to identify at-risk patients early and provide appropriate interventions.
 
-Liver malfunction can be caused by several factors, including:
-- Viral infections (e.g., hepatitis)
-- Excessive alcohol consumption
-- Exposure to harmful gases
-- Consumption of contaminated or stale food, including pickles
-- Inherited diseases
+## Exploratory Data Analysis (EDA)
 
-## Increasing Incidence of Liver Disease
+### Describe the Dataset and its Features
 
-The incidence of liver disease is on the rise globally, making it imperative to develop efficient and accurate methods for early detection. Early identification of liver disease can lead to timely intervention and better management of the condition.
+- Key parameters of numerical and categorical features.
 
-## Role of Machine Learning
+### Data Visualization
 
-Machine learning (ML) can assist in the early identification of liver disease by evaluating vital parameters such as liver enzymes, bilirubin levels, and other biomarkers. This approach aims to provide a more efficient and accurate means of identifying at-risk patients, thereby aiding healthcare professionals in their diagnostic processes.
+- Univariate Analysis
+- Bivariate Analysis
+- Multivariate Analysis
 
-## Project Overview
+### Numerical Summaries
 
-### Dataset
+- Mean, median, minimum, and maximum values of numerical features.
+- Correlation matrix of numerical features.
 
-The dataset used in this project contains medical data related to liver functions. It includes several vital parameters and biomarkers that are essential for diagnosing liver disease. The dataset, however, is small, contains many outliers, and has a few missing values, which posed challenges during the modeling phase.
+## Data Preprocessing
 
-### Models Used
+- Replacing missing values in `Albumin_and_Globulin_Ratio` with the median.
+- Encoding categorical values to numerical values.
+- Processing duplicates in the dataset.
 
-Based on performance metrics comparison and evaluation, the following models were identified as the best performers:
-1. Gradient Boosting
-2. Artificial Neural Network (ANN)
-3. Decision Tree
-4. Random Forest
+## Feature Engineering
 
-### Local Deployment
+- Train-test split of the dataset.
+- Feature selection: Dropping constant features.
+- Scaling the features.
+
+## Model Evaluation
+
+The following machine learning models were evaluated using different metrics:
+
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- Support Vector Classifier (SVC)
+- Gradient Boosting Classifier
+- Artificial Neural Network (ANN)
+
+### Model Performance
+
+| Model                                    | F1-score | Accuracy | Precision | Recall | Confusion Matrix               |
+|------------------------------------------|-----------|-----------|-----------|---------|---------------------------------|
+| Logistic Regression without hyperparameter | 78.0     | 72.0      | 67.0      | 94.0   | [[72, 5], [35, 31]]             |
+| Logistic Regression with hyperparameter   | 79.0     | 73.0      | 67.0      | 95.0   | [[72, 4], [35, 32]]             |
+| Decision Tree using RandomizedSearchCV    | 80.0     | 70.0      | 79.0      | 80.0   | [[85, 21], [22, 15]]            |
+| Random Forest using RandomizedSearchCV    | 82.0     | 73.0      | 80.0      | 83.0   | [[86, 18], [21, 18]]            |
+| SVC using RandomizedSearchCV              | 71.0     | 66.0      | 57.0      | 95.0   | [[61, 3], [46, 33]]             |
+| GradientBoostingClassifier using RandomizedSearchCV | 83.0 | 76.0 | 82.0 | 85.0 | [[88, 16], [19, 20]]             |
+| ANN                                       | 83.0     | 73.0      | 89.0      | 78.0   | [[95, 27], [12, 9]]             |
+
+## Local Deployment
 
 This project has been implemented for local deployment using Flask. The application provides an interface where users can input medical parameters and receive predictions on whether they may have liver disease. The Flask application consists of the following components:
+
 - `app.py`: The main Flask application file that handles the server and prediction logic.
 - `index.html`: The front-end HTML file for user input.
-- `result.html`: The front-end HTML file for predicted page.
+- `result.html`: The front-end HTML file for the predicted page.
 - `requirements.txt`: The file listing the required Python packages for the project.
 
 ### Prerequisites
@@ -54,22 +78,19 @@ This project has been implemented for local deployment using Flask. The applicat
 ### Installation
 
 1. Clone the repository:
-    ```bash
-    git clone https://github.com/yourusername/liver-disease-prediction.git
-    cd liver-disease-prediction
-    ```
+
+```bash
+git clone https://github.com/yourusername/liver-disease-prediction.git
+cd liver-disease-prediction
+
 
 2. Install the required packages:
-    ```bash
-    pip install -r requirements.txt
-    ```
+pip install -r requirements.txt
 
-3. Run the Flask application:
-    ```bash
-    python app.py
-    ```
+3.Run the Flask application:
+python app.py
 
-4. Open your web browser and go to `http://127.0.0.1:5000` to access the application.
+Open your web browser and go to http://127.0.0.81:5000 to access the application.
 
 ### File Structure
 
@@ -78,8 +99,31 @@ This project has been implemented for local deployment using Flask. The applicat
 - `templates/result.html`: The HTML file for styling the web interface.
 - `requirements.txt`: The file listing the required Python packages.
 
-## Usage
+### Usage
 
 1. Open the application in your web browser.
 2. Enter the medical parameters in the input fields.
 3. Click the "Predict" button to get the model's prediction.
+
+## Docker Deployment
+
+This project can also be deployed using Docker. The Docker image is available with the tag `sanjay1004k/liver`. To deploy the project using Docker, follow these steps:
+
+### Pull the Docker image:
+
+```bash
+docker pull sanjay1004k/liver
+
+### Run the Docker container:
+
+docker run -p 5000:5000 sanjay1004k/liver01
+
+op:
+ * Serving Flask app 'app'
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:81
+ * Running on http://172.17.0.2:81
+
+Open your web browser and go to http://127.0.0.1:81 to access the application.
